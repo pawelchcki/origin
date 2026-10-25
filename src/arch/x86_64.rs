@@ -259,7 +259,7 @@ pub(super) unsafe fn clone(
 #[inline]
 pub(super) unsafe fn set_thread_pointer(ptr: *mut c_void) {
     unsafe {
-        rustix::runtime::set_fs(ptr);
+        rustix::runtime_448b8ad740e2a26f::set_fs(ptr);
         debug_assert_eq!(*ptr.cast::<*const c_void>(), ptr);
         debug_assert_eq!(thread_pointer(), ptr);
     }

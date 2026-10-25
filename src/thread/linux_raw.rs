@@ -27,8 +27,8 @@ use rustix::mm::{MapFlags, MprotectFlags, ProtFlags, mmap_anonymous, mprotect};
 use rustix::param::{linux_execfn, page_size};
 use rustix::process::{Resource, getrlimit};
 #[cfg(feature = "signal")]
-use rustix::runtime::{How, KernelSigSet, kernel_sigprocmask};
-use rustix::runtime::{exe_phdrs, set_tid_address};
+use rustix::runtime_448b8ad740e2a26f::{How, KernelSigSet, kernel_sigprocmask};
+use rustix::runtime_448b8ad740e2a26f::{exe_phdrs, set_tid_address};
 use rustix::thread::gettid;
 
 pub use rustix::thread::Pid as ThreadId;
@@ -343,7 +343,7 @@ pub(super) unsafe fn initialize_main(mem: *mut c_void) {
         let guard_size = page_size();
 
         // Initialize the canary value from the OS-provided random bytes.
-        let random_ptr = rustix::runtime::random().cast::<usize>();
+        let random_ptr = rustix::runtime_448b8ad740e2a26f::random().cast::<usize>();
         let canary = random_ptr.read_unaligned();
         __stack_chk_guard = canary;
 
@@ -377,7 +377,7 @@ pub(super) unsafe fn initialize_main(mem: *mut c_void) {
             guard_size,
             0,
         );
-        let tid = rustix::runtime::set_tid_address(thread_id_ptr.cast());
+        let tid = rustix::runtime_448b8ad740e2a26f::set_tid_address(thread_id_ptr.cast());
         *thread_id_ptr = tid.as_raw_nonzero().get();
 
         // Point the platform thread-pointer register at the new thread metadata.
@@ -772,7 +772,7 @@ unsafe fn exit(return_value: Option<NonNull<c_void>>) -> ! {
         }
 
         // Terminate the thread.
-        rustix::runtime::exit_thread(0)
+        rustix::runtime_448b8ad740e2a26f::exit_thread(0)
     }
 }
 

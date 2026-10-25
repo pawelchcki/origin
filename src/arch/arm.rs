@@ -268,7 +268,7 @@ pub(super) unsafe fn clone(
 #[inline]
 pub(super) unsafe fn set_thread_pointer(ptr: *mut c_void) {
     unsafe {
-        let res = rustix::runtime::arm_set_tls(ptr);
+        let res = rustix::runtime_448b8ad740e2a26f::arm_set_tls(ptr);
         debug_assert_eq!(res, Ok(()));
         debug_assert_eq!(thread_pointer(), ptr);
     }
