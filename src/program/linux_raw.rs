@@ -342,7 +342,7 @@ pub fn immediate_exit(status: c_int) -> ! {
     log::trace!("Program exiting with status `{:?}`", status);
 
     // Call `rustix` to exit the program.
-    rustix::runtime::exit_group(status)
+    rustix::runtime_448b8ad740e2a26f::exit_group(status)
 }
 
 /// Execute a trap instruction.

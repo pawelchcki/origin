@@ -16,7 +16,7 @@ rust-version = "1.88"
 
 [dependencies]
 linux-raw-sys = { version = "0.12.0", default-features = false, optional = true, features = ["general", "no_std", "elf", "auxvec"] }
-rustix = { version = "1.0.0", default-features = false }
+rustix = { version = "1.1.5", default-features = false }
 bitflags = { version = "2.4.0", default-features = false }
 log = { version = "0.4.14", default-features = false, optional = true }
 rustix-futex-sync = { version = "0.4.0", optional = true }
@@ -52,7 +52,7 @@ optional = true
 # On aarch64, compiler_builtins depends on `getauxval`, so we need rustix with
 # the "param" feature.
 [target.'cfg(target_arch = "aarch64")'.dependencies.rustix]
-version = "1.0.0"
+version = "1.1.5"
 default-features = false
 features = ["param"]
 
